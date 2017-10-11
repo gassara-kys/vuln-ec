@@ -1,0 +1,35 @@
+# Routes Config
+#
+# This file defines all application routes (Higher priority routes first)
+#
+
+module:testrunner
+# module:jobs
+
+
+GET     /                                       Top.Index
+GET     /login                                  Login.Index
+
+GET     /search                                 Search.Index
+GET     /search/:itemId                         Search.Detail
+
+GET     /purchase/:itemId                       Purchase.Confirm
+GET     /purchase/cmoplete/:itemId              Purchase.Complete
+GET     /purchase/completed                     Purchase.Completed
+#POST    /purchase/:itemId                       Purchase.Confirm
+#POST    /purchase/cmoplete/:itemId              Purchase.Complete
+
+GET     /sale                                   Sale.Index
+GET     /sale/confirm                           Sale.Confirm
+GET     /sale/complete                          Sale.Complete
+GET     /sale/completed                         Sale.Completed
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/*filepath                       Static.Serve("public")
+
+# Catch all
+*       /:controller/:action                    :controller.:action
